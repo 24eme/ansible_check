@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ./$(dirname $0)/.. 2> /dev/null
+cd $(dirname $0)/.. 2> /dev/null
 
 actualdir=$(pwd)
 
