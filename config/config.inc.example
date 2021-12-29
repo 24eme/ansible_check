@@ -1,0 +1,3 @@
+ANSIBLE_REPO="/path/to/ansible/plabooks/"
+PLAYBOOKS_TO_RUN=$(ls output_html/playbooks | grep 'html$' | sed 's/\.html/.yml/')
+ANSIBLE_PLAYBOOK_CMD=ansible-playbook
