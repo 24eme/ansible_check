@@ -4,6 +4,11 @@ cd ./$(dirname $0)/.. 2> /dev/null
 
 actualdir=$(pwd)
 
+if test -f output_html/.running; then
+	exit 1;
+fi
+echo $$ > output_html/.running
+
 mkdir -p output_html/playbooks
 
 for config in config/*inc ; do
@@ -22,3 +27,4 @@ for config in config/*inc ; do
 
 done
 
+rm output_html/.running
