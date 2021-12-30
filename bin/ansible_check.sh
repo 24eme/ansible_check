@@ -27,4 +27,14 @@ for config in config/*inc ; do
 
 done
 
+if test $GIT_OUTPUT ; then
+	cd output_html
+	if ! test -d .git; then
+		git init .
+	fi
+	git add *
+	git commit -m "update"
+	cd -
+fi
+
 rm output_html/.running
