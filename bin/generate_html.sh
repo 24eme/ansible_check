@@ -12,7 +12,7 @@ sort /tmp/ansible_check_generate_html_$$.log | sed 's/^[^:]*\/\([^:]*\).html:/\1
 rm /tmp/ansible_check_generate_html_$$.log
 
 echo '<h1>Ansible checks</h1>' > output_html/index.html.tmp
-cat output_html/index.html.table | grep '<tr>' | awk -F ':' '{print $2}'  | sed 's/;.*//'  | sort | uniq -c  | awk 'BEGIN {print "<table><tr>"} END {print "</tr></table>"} {print "<td style=\"color:"$2";\">"$1"</td>"}' >> output_html/index.html.tmp
+cat output_html/index.html.table | grep '<tr>' | awk -F ':' '{print $2}'  | sed 's/;.*//'  | sort | uniq -c  | awk 'BEGIN {print "<table><tr>"} END {print "</tr></table><br/><br/>"} {print "<td style=\"color:white; background-color:"$2";\"><h3>"$1" hosts</h1></td>"}' >> output_html/index.html.tmp
 cat output_html/index.html.table >> output_html/index.html.tmp
 rm output_html/index.html.table
 echo -n "<p>Last update: " >> output_html/index.html.tmp ; ls -lrt --full-time  output_html/playbooks/ | tail -n  1 | awk '{print $6" "$7}' >> output_html/index.html.tmp ; echo "</p>" >> output_html/index.html.tmp
