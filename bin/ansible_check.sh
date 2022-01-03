@@ -21,6 +21,8 @@ for config in config/*inc ; do
 		export ANSIBLE_FORCE_COLOR=true
 		cp $actualdir/output_html/playbooks/$html $actualdir/output_html/playbooks/$html."previous"
 		$ANSIBLE_PLAYBOOK_CMD --ssh-extra-args "-o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" --diff --check $playbook 2>&1 | aha -t "ansible playbook $playbook" > $actualdir/output_html/playbooks/$html".running.htm"
+		echo >> $actualdir/output_html/playbooks/$html".running.htm"
+		echo "<p>generated on "$(hostname)" at "$(date '+%Y-%m-%d %H-%M')"</p>" >> $actualdir/output_html/playbooks/$html".running.htm"
 		mv $actualdir/output_html/playbooks/$html".running.htm" $actualdir/output_html/playbooks/$html
 	done
 	cd - 2> /dev/null
